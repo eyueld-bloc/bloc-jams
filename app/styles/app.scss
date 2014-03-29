@@ -10,6 +10,7 @@
 body, html {
   // Allows us to set the min-height for child elements.
   height: 100%;
+  background-color: black;
 }
 
 // Want the edges for Bootstrap navbars to be non-rounded.
@@ -17,4 +18,5 @@ body, html {
   border-radius: 0;
   margin-bottom: 0;
 }
+
 
