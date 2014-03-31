@@ -1,0 +1,40 @@
+// Create a variable for the footer height to make changing the CSS easier.
+$default-player-footer-height: 100px;
+
+.player-body-container {
+  // Stretch the height of this container to fill up the entire window.
+  min-height: 100%;
+
+  // Create room for our fixed position footer so it doesn't cover up content.
+  padding-bottom: $default-player-footer-height;
+
+  // Our default color for all text and links will be 'white'
+  color: white;
+  a {
+    color: white;
+  }
+
+  // Use a Bourbon (http://bourbon.io/) mixin to create a pretty background
+  //   The colors are defined in 'app/styles/imports/_variables.scss'
+  @include background(radial-gradient($very-light-background-purple, $dark-background-purple));
+
+}
+
+// Define common properties for how we want the footers/header to look.
+.default-player-header, .default-player-footer {
+  // Set the background color of the header and footer to be a transparent white.
+  //  'rgba' is a SASS function that allows us to change the opacity of a color.
+  background-color: rgba($medium-purple, .9);
+}
+
+// Header specific styling
+.default-player-header {
+  // Our design calls for the 'extra bold' Open Sans font.
+  @include font-open-sans(800);
+}
+
+// Footer specific styling
+.default-player-footer {
+  // Set the footer to be a fixed height.
+  height: $default-player-footer-height;
+}

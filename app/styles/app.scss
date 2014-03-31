@@ -10,13 +10,23 @@
 body, html {
   // Allows us to set the min-height for child elements.
   height: 100%;
-  background-color: black;
+  background-color: #0a4;
 }
 
 // Want the edges for Bootstrap navbars to be non-rounded.
 .navbar {
   border-radius: 0;
   margin-bottom: 0;
+}
+
+// EYUEL'S SECTION
+.container {
+  height: 5px;
+  font-color: white;  
+}
+#title{
+  color: white;
+
 }
 
 
