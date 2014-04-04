@@ -1,3 +1,28 @@
 extends layouts/player_layout
 
 block content
+  .container.album-container
+    .row.album-header-container
+      .col-md-3
+        img(src="/images/album-placeholder.png")
+      .col-md-8.col-md-push-1
+        .album-header-information
+          h3.album-title The Colors
+          h4.album-artist Pablo Picasso
+          h5.album-meta-info 1881 on Cubism
+
+    .row
+      .col-md-12
+        table.table.album-song-listing
+          tr
+            td 1
+            td Blue
+            td x:xx
+          tr
+            td 2
+            td Green
+            td x:xx
+          tr
+            td 3
+            td Red
+            td x:xx

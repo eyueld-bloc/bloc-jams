@@ -1,2 +1,51 @@
 // SASS stylings for the 'album' view.
 
+// Adding a margin around the Album Header solves our space problem.
+// * Question: Why would you want to use margin rather than padding?
+.album-header-container {
+  margin-top: 55px;
+  margin-bottom: 25px;
+}
+
+// This styles the right side of our Album Header
+.album-header-information {
+  // Pushes down the album information and make sure there's sufficent space at the bottom
+  margin-top: 45px;
+  margin-bottom: 20px;
+
+  // Modifying the line height allows us to increasing the spacing above and
+  // below the content. Another way of achieving the same effect would be to
+  // set a margin-top and margin-bottom for each of these classes.
+  .album-title, .album-artist, .album-meta-info {
+    line-height: 150%;
+  }
+
+  // Our design calls for specific sizes and fonts for each of these elements.
+  .album-title {
+    font-size: 48px;
+    @include font-open-sans(300);
+  }
+
+  .album-artist {
+    font-size: 24px;
+    @include font-open-sans(700);
+  }
+
+  .album-meta-info {
+    font-size: 16px;
+    @include font-open-sans(500);
+  }
+}
+
+
+// This styles our Song Listing
+.table.album-song-listing {
+  // Override the font for the entire table.
+  @include font-open-sans(300);
+
+  // Override the defaults that Bootstrap sets.
+  td {
+    padding: 20px;
+    border-top: 1px solid rgba(white, .4);
+  }
+}
