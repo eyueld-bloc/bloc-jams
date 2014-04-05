@@ -1,2 +1,50 @@
 // SASS for your album collection view
 
+
+.thumbnail {
+  margin-top: 55px;
+  margin-bottom: 25px;
+  margin-left: 15px;
+  margin-right: 15px;
+  opacity: 60%;
+  background: transparent;
+  border: none;
+}
+
+.caption {
+
+  
+
+  .album-name {
+    font-size: 16px;
+    @include font-open-sans(300);
+    color: white;
+      }
+    a:hover{ 
+      color: purple;
+      text-decoration: none;
+
+    }
+
+  }
+
+  .artist-name {
+    font-size: 16px;
+    @include font-open-sans(300);
+    color: white;
+    opacity: .6;
+    a:hover{ 
+      color: purple;
+      text-decoration: none;
+
+    }
+  }
+
+  .album-meta-info {
+    font-size: 16px;
+    @include font-open-sans(300);
+    color: white;
+    opacity: .6;
+
+
+}
