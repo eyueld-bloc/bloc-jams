@@ -38,6 +38,20 @@ var createSongRow = function(songNumber, songName, songLength) {
 
 var changeAlbumView = function(album) {
   // Your code goes here
+  var $albumTitle = $('.album-title');
+  $albumTitle.text(album.name);
+
+  // Update the album artist
+  var $albumArtist = $('.album-artist');
+  $albumArtist.text(album.artist);
+
+  // Update the meta information
+  var $albumMeta = $('.album-meta-info');
+  $albumMeta.text(album.year + " on " + album.label);
+
+  // Update the album image by changing the 'src' attribute.
+  var $albumImage = $('.album-image img');
+  $albumImage.attr('src', album.albumArtUrl);
 };
 
 // This 'if' condition is used to preven the jQuery modifications
@@ -48,5 +62,16 @@ if (document.URL.match(/\/album/)) {
   $(document).ready(function() {
     // Code to switch views goes here.
     var albums = [albumPicasso, albumMarconi];
+
+    var albumIndex = 0;
+    var $albumImage = $('.album-image img');
+    // Add a 'click' event handler. The function that we pass into the 'click' function
+    //  will be called everytime $albumImage is clicked.
+    $albumImage.click(function(event) {
+      // This line toggles which image we'll be showing on next click.
+      //   - The calculation '(imageUrlIndex + 1) % 2' will follow this pattern 1, 0, 1, 0, 1 because of the modulo opeator ('%').
+      albumIndex = (albumIndex + 1) % albums.length;
+
+      changeAlbumView(albums[albumIndex]);
   });
 }

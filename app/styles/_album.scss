@@ -37,9 +37,16 @@
   }
 }
 
+.table-hover tbody tr:hover td {
+   background-color: transparent;
+}
+
+.table.album-song-listing {
+
 
 // This styles our Song Listing
 .table.album-song-listing {
+  
   // Override the font for the entire table.
   @include font-open-sans(300);
 
