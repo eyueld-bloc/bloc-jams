@@ -38,8 +38,7 @@ var createSongRow = function(songNumber, songName, songLength) {
   var $newSongRow = $('<tr>');
   $newSongRow.append('<td class="col-md-1">' + songNumber + '</td>');
   $newSongRow.append('<td class="col-md-9">' + songName + '</td>');
-  $newSongRow.append('<td class="col-md-2">' + songLength + '</td>');\
-  $newSongRow.append('</tr>')
+  $newSongRow.append('<td class="col-md-2">' + songLength + '</td>');
 
   return $newSongRow;
 };
@@ -66,7 +65,7 @@ var changeAlbumView = function(album) {
   var songs = album.songs;
   for (var i = 0; i < songs.length; i++) {
     var songData = songs[i];
-    var $newRow = createSongRow(i, songData.name, songData.length);
+    var $newRow = createSongRow(i + 1, songData.name, songData.length);
     $songList.append($newRow);
   }
 };
@@ -74,21 +73,25 @@ var changeAlbumView = function(album) {
 // This 'if' condition is used to preven the jQuery modifications
 // from happening on non-Album view pages.
 //  - This line checks if the current url has "/album" in its path using a regex.
-if (document.URL.match(//album/)) {
+if (document.URL.match(/\/album/)) {
   // Wait until the HTML is fully processed.
   $(document).ready(function() {
     // Code to switch views goes here.
     var albums = [albumPicasso, albumMarconi];
+    changeAlbumView(albumPicasso);
 
     var albumIndex = 0;
-    var $albumImage = $('.album-image img');
+    var $albumImage = $('img.album-image');
+    console.log($albumImage);
     // Add a 'click' event handler. The function that we pass into the 'click' function
     //  will be called everytime $albumImage is clicked.
+    // on('click', fn)
     $albumImage.click(function(event) {
       // This line toggles which image we'll be showing on next click.
       //   - The calculation '(imageUrlIndex + 1) % 2' will follow this pattern 1, 0, 1, 0, 1 because of the modulo opeator ('%').
       albumIndex = (albumIndex + 1) % albums.length;
 
       changeAlbumView(albums[albumIndex]);
+    });
   });
 }
