@@ -35,13 +35,62 @@ var albumMarconi = {
 
 var createSongRow = function(songNumber, songName, songLength) {
 
-  var $newSongRow = $('<tr>');
-  $newSongRow.append('<td class="col-md-1">' + songNumber + '</td>');
-  $newSongRow.append('<td class="col-md-9">' + songName + '</td>');
-  $newSongRow.append('<td class="col-md-2">' + songLength + '</td>');
+  var template = 
+        '<tr class = "song" data-beingPlayed="0" data-song-number="'+ songNumber + '">'
+      + ' <td class="col-md-1 songNumber " >' + songNumber  + '</td>'
+      + ' <td class="col-md-9">' + songName + '</td>'
+      + ' <td class="col-md-2">' + songLength + '</td>'
+      + '</tr>'
+      ;
 
-  return $newSongRow;
+  return $(template);
 };
+
+
+
+var currentlyPlaying;
+
+var songHoverIn = function(event){
+
+  $this = $(this)
+  var beingPlayed = $this.attr('data-beingPlayed');
+  console.log(beingPlayed);
+  if (beingPlayed == 0){
+    $this.find(".songNumber").html('<i class="fa fa-play"></i>');
+  } else {
+    $this.find(".songNumber").html('<i class="fa fa-pause"></i>');
+  }
+
+  var $songNum = $this.find(".songNumber");
+  $songNum.click(function(event){
+    
+    if (beingPlayed == 0){
+      $this.find(".songNumber").html('<i class="fa fa-pause"></i>');
+      $this.attr('data-beingPlayed', 1);  
+      currentSongPlaying = $this.attr('data-song-number');
+      $this.css("background-color", "rgba(200, 54, 54, 0.5)");
+    } else {
+      $this.find(".songNumber").html('<i class="fa fa-play"></i>');
+      $this.attr('data-beingPlayed', 0); 
+      $this.css("background-color", "");
+    }
+  });   
+
+};
+var songHoverOut = function(event){
+
+    $this = $(this);
+    songNumber = $this.attr('data-song-number');
+    var beingPlayed = $this.attr('data-beingPlayed');
+
+    if (beingPlayed == 1){
+      $this.find(".songNumber").html('<i class="fa fa-pause"></i>');
+    } else {
+      $this.find(".songNumber").html(songNumber);
+    }
+    
+};
+
 
 var changeAlbumView = function(album) {
   // Your code goes here
@@ -70,6 +119,7 @@ var changeAlbumView = function(album) {
   }
 };
 
+
 // This 'if' condition is used to preven the jQuery modifications
 // from happening on non-Album view pages.
 //  - This line checks if the current url has "/album" in its path using a regex.
@@ -78,11 +128,11 @@ if (document.URL.match(/\/album/)) {
   $(document).ready(function() {
     // Code to switch views goes here.
     var albums = [albumPicasso, albumMarconi];
-    changeAlbumView(albumPicasso);
+    changeAlbumView(albumMarconi);
 
     var albumIndex = 0;
     var $albumImage = $('img.album-image');
-    console.log($albumImage);
+    //console.log($albumImage);
     // Add a 'click' event handler. The function that we pass into the 'click' function
     //  will be called everytime $albumImage is clicked.
     // on('click', fn)
@@ -92,6 +142,14 @@ if (document.URL.match(/\/album/)) {
       albumIndex = (albumIndex + 1) % albums.length;
 
       changeAlbumView(albums[albumIndex]);
+      $(".song").hover(songHoverIn,songHoverOut);
     });
+
+    $(".song").hover(songHoverIn,songHoverOut);
+
+    
+
+    
+   
   });
 }
