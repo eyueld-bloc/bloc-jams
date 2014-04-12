@@ -1,17 +1,21 @@
 
-var $defaultThumbnail = 
+var buildDefaultThumbnail = function(albumURL){
+  var defaultThumbnail = 
         '<div class="col-md-2">'
       + '  <div class="thumbnail">'
       + '     <div class="collection-album-image-container">'
-      + '       <a href="/album"><img src="/images/album-placeholder.png"></a>'
+      + '       <a href="' + albumURL + '"><img src="/images/album-placeholder.png"></a>'
       + '     </div>'
       + '     <div class="caption">'
-      + '       <h4 class="album-name"><a href="//album">Album Name</a></h4>'
-      + '       <h4 class="artist-name"><a href="//album">Artist Name</a></h4>'
+      + '       <h4 class="album-name"><a href="' + albumURL + '">Album Name</a></h4>'
+      + '       <h4 class="artist-name"><a href="' + albumURL + '">Artist Name</a></h4>'
       + '       <h5 class="album-meta-info">X Songs</h5>'
       + '     </div>'
       + '  </div>'
       + '</div>'
+      ;
+  return $(defaultThumbnail);    
+};
 
 var buildAlbumOverlay = function(albumURL) {
   var template =
@@ -49,7 +53,7 @@ var updateCollectionView = function() {
 
   for (var y = 0; y < 5; y++){
     for (var x = 0; x < 5; x++){
-      $(".row").append($defaultThumbnail);
+      $(".row").append(buildDefaultThumbnail("/album"));
     }
   }
   $(".collection-album-image-container").hover(onHover, offHover);
