@@ -3,16 +3,19 @@ extends layouts/player_layout
 block content
   .container
     .row
+//
       -for (var y = 0; y<4; y++)
         -for (var x = 0; x<6; x++)
           .col-md-2
             .thumbnail
-              a(href="/album")
-                img(src="/images/album-placeholder.png")
+              .collection-album-image-container
+                a(href="/album")
+                  img(src="/images/album-placeholder.png")
               .caption
                 h4.album-name 
                   a(href="/album") Album Name
                 h4.artist-name 
                   a(href="/album") Artist Name
                 h5.album-meta-info X Songs 
+//
 
