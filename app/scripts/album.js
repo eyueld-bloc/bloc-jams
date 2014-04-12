@@ -33,11 +33,11 @@ var albumMarconi = {
     ]
 };
 
-var createSongRow = function(songNumber, songName, songLength) {
+var createSongRow = function(songRowNumber, songName, songLength) {
 
   var template = 
-        '<tr class = "song" data-beingPlayed="0" data-song-number="'+ songNumber + '">'
-      + ' <td class="col-md-1 songNumber " >' + songNumber  + '</td>'
+        '<tr class = "song" data-songBeingPlayed="0" data-song-number="'+ songRowNumber + '">'
+      + ' <td class="col-md-1 songRowNumber " >' + songRowNumber  + '</td>'
       + ' <td class="col-md-9">' + songName + '</td>'
       + ' <td class="col-md-2">' + songLength + '</td>'
       + '</tr>'
@@ -47,48 +47,64 @@ var createSongRow = function(songNumber, songName, songLength) {
 };
 
 
-
-var currentlyPlaying;
+var currentPlayingSong = "";
 
 var songHoverIn = function(event){
+  $this = $(this);
+  var $songRow = $this.find(".songRowNumber");
+  var songRowNumber = $this.attr('data-song-number');
+  var songBeingPlayed = $this.attr('data-songBeingPlayed');
 
-  $this = $(this)
-  var beingPlayed = $this.attr('data-beingPlayed');
-  console.log(beingPlayed);
-  if (beingPlayed == 0){
-    $this.find(".songNumber").html('<i class="fa fa-play"></i>');
-  } else {
-    $this.find(".songNumber").html('<i class="fa fa-pause"></i>');
+  if (songBeingPlayed == 0){
+      $songRow.html('<i class="fa fa-play"></i>');
+    }
+   else if (songBeingPlayed == 1){
+    $songRow.html('<i class="fa fa-pause"></i>');
   }
 
-  var $songNum = $this.find(".songNumber");
-  $songNum.click(function(event){
+  
+  $songRow.click(function(event){
     
-    if (beingPlayed == 0){
-      $this.find(".songNumber").html('<i class="fa fa-pause"></i>');
-      $this.attr('data-beingPlayed', 1);  
-      currentSongPlaying = $this.attr('data-song-number');
-      $this.css("background-color", "rgba(200, 54, 54, 0.5)");
-    } else {
-      $this.find(".songNumber").html('<i class="fa fa-play"></i>');
-      $this.attr('data-beingPlayed', 0); 
-      $this.css("background-color", "");
+    if (songBeingPlayed == 0){
+        if (currentPlayingSong == ""){
+          $songRow.html('<i class="fa fa-pause"></i>');
+          $this.attr('data-songBeingPlayed', 1);     
+          currentPlayingSong = songRowNumber;
+
+        }
+        else if (currentPlayingSong != songRowNumber ){
+          var $previousPlayingRow = $(".album-song-list-table tr").eq(currentPlayingSong - 1);
+          console.log($previousPlayingRow.attr('data-song-number'));
+          
+          $previousPlayingRow.css("background-color", "");
+          $previousPlayingRow.find(".songRowNumber").html(currentPlayingSong);
+          $previousPlayingRow.attr('data-songBeingPlayed', 0);
+
+          currentPlayingSong = songRowNumber;
+          $songRow.html('<i class="fa fa-pause"></i>');
+          $this.attr('data-songBeingPlayed', 1); 
+          
+        } 
+    } 
+    if ( songBeingPlayed == 1) {
+        $songRow.html('<i class="fa fa-play"></i>');
+        $this.attr('data-songBeingPlayed', 0); 
+        currentPlayingSong = "";
     }
   });   
-
 };
 var songHoverOut = function(event){
 
     $this = $(this);
-    songNumber = $this.attr('data-song-number');
-    var beingPlayed = $this.attr('data-beingPlayed');
+    var songRowNumber = $this.attr('data-song-number');
+    var songBeingPlayed = $this.attr('data-songBeingPlayed');
 
-    if (beingPlayed == 1){
-      $this.find(".songNumber").html('<i class="fa fa-pause"></i>');
+    if (songBeingPlayed == 1){
+      $this.css("background-color", "rgba(200, 54, 54, 0.5)");
     } else {
-      $this.find(".songNumber").html(songNumber);
+      $this.find(".songRowNumber").html(songRowNumber);
+      $this.css("background-color", "");
     }
-    
 };
 
 
