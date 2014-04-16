@@ -1,5 +1,7 @@
 // SASS stylings for the 'album' view.
 
+@import "imports/fonts";
+
 // Adding a margin around the Album Header solves our space problem.
 // * Question: Why would you want to use margin rather than padding?
 .album-header-container {
@@ -39,6 +41,7 @@
 
 .table-hover tbody tr:hover td {
    background-color: rgba(white, .6);
+   
 }
 
 

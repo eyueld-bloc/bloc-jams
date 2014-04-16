@@ -1,0 +1,144 @@
+
+@import "imports/fonts";
+@import "imports/buttons";
+
+.contianer-paginated-link {
+
+  margin-left: 180px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-color: #D2287B;
+  background-color: transparent;
+
+}
+
+
+.personal-information {
+  @include font-open-sans(300);
+  font-size: 24px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  letter-spacing: 0.1em;
+}
+.personal-information-image-container{
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  img{
+    max-width: 100%;
+  }
+}
+
+.caption{
+  position: absolute;
+  margin-left: 50px;
+  color: white;
+}
+
+.pagination{
+  @include default-button-open-sans(700);
+  background-color: transparent;
+  border-color: transparent;
+  
+
+  margin:20px;
+  margin-left: 500px;
+
+  & > li > a {
+      background-color: transparent;
+      border-color: #D2287B;
+      color:white;
+      &:hover{
+        background-color: #D2287B;
+        color: white;
+        border-color: #D2287B;
+
+      }
+  }
+  & > .active > a {
+      background-color: red;
+      border-color: #D2287B;
+  }
+}
+
+
+
+
+.input-header{
+  @include font-open-sans(300);
+  font-size: 16px;
+  text-decoration-color: white;
+  margin-bottom: 10px;
+  text-align: left;
+
+}
+
+.state{
+  margin-left: 225px;
+}
+
+
+.input-name, .input-email, .input-country{
+  @include font-open-sans(300);
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  color: #0A032B;
+  width: 500px;
+  margin-bottom: 15px;
+  border:none;
+  height:2em;
+}
+
+.input-city, .input-state{
+  @include font-open-sans(300);
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  color: #0A032B;
+  width: 245px;
+  height:2em;
+  margin-bottom: 15px;
+  margin-right: 5px;
+  border:none;
+}
+
+.default-button{
+  @include default-button-open-sans(700);
+  letter-spacing: 0.1em;
+  font-size: 12px;
+}
+form{
+  margin-top: 40px;
+}
+
+.change-password{
+  margin-left: 180px;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+}
+
+.save-profile{
+  margin-left: 200px;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+}
+
+
+
+.subscription-remove{
+  display: none;
+}
+
+.subscription-images{
+  display: inline;
+  text-align: center;
+}
+.subscription-credit-card-information{
+  font-size: 20px;
+  letter-spacing: 0.1em;
+}
+
+
+
+

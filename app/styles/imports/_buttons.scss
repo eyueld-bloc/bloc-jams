@@ -1,0 +1,39 @@
+@mixin default-button-open-sans($weight) {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: $weight;
+  background-color: #D2287B;
+  letter-spacing: 0.1em; 
+  margin-bottom: 20px;
+  height: 2em;
+
+  border-color: transparent;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  
+}
+@mixin active-button-open-sans($weight) {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: $weight;
+  background-color: #9B1D64;
+  text-decoration-color: white;
+  letter-spacing: 1.5em; 
+
+  border-color: transparent;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+@mixin disabled-button-open-sans($weight) {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: $weight;
+  background-color: #9B1D64;
+  text-decoration-color: white;
+  letter-spacing: 1.5em; 
+
+  border-color: transparent;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+

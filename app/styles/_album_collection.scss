@@ -1,5 +1,7 @@
 // SASS for your album collection view
 
+@import "imports/fonts";
+
 // Overlay container used to hold our buttons.
 .collection-album-image-overlay {
   // Make this overlap the image by setting the position to absolute and top offset to 0px.
@@ -31,8 +33,9 @@
   font-size: 20px;
 
   // Default colors for button
-  color: $button-pink;
   background-color: white;
+  color: $button-pink;
+  
 
   // Make the button a circle
   border-radius: 50% 50%;
@@ -47,12 +50,17 @@
     cursor: pointer;
     color: white;
     background-color: $button-pink;
+    i {
+      color: white;
+    }
   }
 
   // Make the icons centered vertically.
   //  - This trick only works for text that doesn't span two lines.
   i {
     line-height: $overlay-button-size;
+    color: $button-pink;
+
   }
   // Add padding to the button to make it look visually centered.
   .fa-play {
@@ -66,6 +74,7 @@
   margin-bottom: 55px;
   margin-left: 5px;
   margin-right: 5px;
+  margin: 0px;
   opacity: 60%;
   background: transparent;
   border: none;
@@ -114,5 +123,9 @@
     color: white;
     opacity: .6;
 
+
+}
+.album-collection-container .col-md-2 {
+  padding: 0px;
 
 }
