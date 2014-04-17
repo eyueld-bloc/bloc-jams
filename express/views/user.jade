@@ -1,72 +1,80 @@
 extends layouts/player_layout
 
 block content
-  
-  ul.pagination.pagination-sm
-    li() 
-      a(class="your-account" href="") YOUR ACCOUNT
-    li()
-      a(class="subscription" href="") SUBSCRIPTION  
+  .container
+    .text-center
+      ul.pagination.pagination-sm
+        li() 
+          a(class="your-account", data-tab-container="container-personal-information") YOUR ACCOUNT
+        li()
+          a(class="subscription", data-tab-container="container-subscription-page") SUBSCRIPTION  
 
-  .container-personal-information
-    .row
-      .col-md-3
-        .header
-          .h4.personal-information Personal Information
-        .thumbnail
-          .personal-information-image-container
-            img(src="/images/user-upload-placeholder.png")
-          .caption
-            button.default-button
-              | UPLOAD 
+    .tab-container.container-personal-information
+      .row
+        .col-md-3
+          .header
+            .h4.personal-information Personal Information
+          .thumbnail
+            .personal-information-image-container
+              img(src="/images/user-upload-placeholder.png")
+            .caption
+              button.default-button.upload
+                | UPLOAD 
 
-      .col-md-8
-         .account-setup
-          form(name="accountSetup", action="", method="post")
-            label(class="input-header name" for="name") Name
-            br
-            input(class="input-name ", type="text", name="name", id="name")
-            br
-            label(class="input-header email" for="email") Email
-            br
-            input(class="input-email  ", type="text", name="email", id="email")
-            br
-            label(class="input-header city" for="city") City
-            label(class="input-header state" for="state") State 
-            br
-            input(class="input-city  ", type="text", name="city", id="city") 
-            input(class="input-state  ", type="text", name="state", id="state")
-            br
-            label(class="input-header country" for="country") Country
-            br
-            input(class="input-country  ", type="text", name="country", id="country")
-            br
-            button.default-button.save-profile           
-                | SAVE PROFILE
-            br
-            label(class="input-header password" for="password") Password
-            br
-            input(class="input-name ", type="text", name="name", id="password")
-            br
-            label(class="input-header password-confirmation" for="password-confirmation") Password Confirmation
-            br
-            input(class="input-name ", type="text", name="password-confirmation", id="password-confirmation")
-            br
-            button.default-button.change-password
-              | CHANGE PASSWORD 
+        .col-md-8
+           .account-setup
+            form(name="accountSetup", action="", method="post")
+              label(class="input-header name" for="name") Name
+              br
+              input(class="input-name ", type="text", name="name", id="name")
+              br
+              label(class="input-header email" for="email") Email
+              br
+              input(class="input-email  ", type="text", name="email", id="email")
+              br
+              label(class="input-header city" for="city") City
+              label(class="input-header state" for="state") State 
+              br
+              input(class="input-city  ", type="text", name="city", id="city") 
+              input(class="input-state  ", type="text", name="state", id="state")
+              br
+              label(class="input-header country" for="country") Country
+              br
+              input(class="input-country  ", type="text", name="country", id="country")
+              br
+              button.default-button.save-profile           
+                  | SAVE PROFILE
+              br
+              label(class="input-header password" for="password") Password
+              br
+              input(class="input-name ", type="text", name="name", id="password")
+              br
+              label(class="input-header password-confirmation" for="password-confirmation") Password Confirmation
+              br
+              input(class="input-name ", type="text", name="password-confirmation", id="password-confirmation")
+              br
+              button.default-button.change-password
+                | CHANGE PASSWORD 
 
-      .col-md-8
-        .subscription-page
-          .subscription-images
-            .center-inline
-              img(class="subscription1" src="/images/subscription-placeholder.png")
-              img(class="subscription2" src="/images/subscription-placeholder.png")
-              img(class="subscription3" src="/images/subscription-placeholder.png")
+      
+    .tab-container.container-subscription-page
+      .subscription-images
+        .text-center
+          img(class="subscription1" src="/images/subscription-placeholder.png")
+          img(class="subscription2" src="/images/subscription-placeholder.png")
+          img(class="subscription3" src="/images/subscription-placeholder.png")
 
-          br
+      br
+    
+      .col-md-8.col-md-push-2
+        .subscription-creditCard-information
+          | Credit Cards
+        br
+        table.table.table-hover.creditCard-list-table
 
-          .subscription-credit-card-information
-            | Creadit Cards
+        br
+        button.default-button.add-card          
+              | ADD CARD
 
 
 
