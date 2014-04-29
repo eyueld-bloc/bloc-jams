@@ -1,4 +1,14 @@
 
+
+
+/*
+
+
+---------------------------- JQUERY VERSION OF ALBUM.JS ----------------------------
+--
+--
+
+
 // Example Album 1
 var albumPicasso = {
   name: 'The Colors',
@@ -62,7 +72,6 @@ var songHoverIn = function(event){
     $songRow.html('<i class="fa fa-pause"></i>');
   }
 
-  
   $songRow.click(function(event){
     
     if (songBeingPlayed == 0){
@@ -163,9 +172,8 @@ if (document.URL.match(/\/album/)) {
 
     $(".song").hover(songHoverIn,songHoverOut);
 
-    
-
-    
    
   });
 }
+
+*/

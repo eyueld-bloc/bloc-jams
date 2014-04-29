@@ -1,19 +1,33 @@
 extends layouts/player_layout
 
 block content
-  .container.album-container
+  .container.album-container(ng-controller="Album.controller")
     .row.album-header-container
       .col-md-3
-        img(class="album-image", src="/images/album-placeholder.png")
+        img(ng-src="{{album.albumArtUrl}}", ng-click="changeAlbum()")
       .col-md-8.col-md-push-1
         .album-header-information
-          h3.album-title 
-          h4.album-artist  
-          h5.album-meta-info  
+          h3.album-title {{ album.name }}
+          h4.album-artist {{ album.artist }}  
+          h5.album-meta-info {{ album.year}} on {{ album.label }} 
+          input(ng-model="service", style="color: #000") 
+          | {{ service}}
+        div(ng-controller="ctrl")
+          input(ng-model="service", style="color: #000") 
+          p  | {{ service }}
+          p {{ $parent.service }}
 
     .row
       .col-md-12
         table.table.table-hover.album-song-list-table
+          tr(ng-repeat="song in album.songs")
+            td
+              | {{ $index + 1 }}
+            td
+              | {{ song.name }}
+            td
+              | {{ song.length }}
+
 
 
             
