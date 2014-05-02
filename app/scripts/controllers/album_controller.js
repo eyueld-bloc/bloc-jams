@@ -37,6 +37,8 @@ angular.module("Controllers").controller('Album.controller', ['$scope', function
 
   var albums = [albumPicasso, albumMarconi];
   var currentAlbumIndex = 0;
+  var options = ['default', 'play', 'pause'];
+  $scope.selection = options[0];
 
   // Remember: All properties added to the '$scope' object can be accessed in the 
   $scope.album = albums[0];
@@ -44,10 +46,17 @@ angular.module("Controllers").controller('Album.controller', ['$scope', function
     currentAlbumIndex = (currentAlbumIndex + 1) % albums.length;
     $scope.album = albums[currentAlbumIndex];
   };
+  $scope.showPlay = function(){
+    $scope.selection = options[1];
+  };
+  $scope.showTrackNumber = function(){
+    $scope.selection = options[0];
+  };
+   $scope.showPause = function(){
+    $scope.selection = options[2];
+  };
+
 }]);
 
-angular.module("Controllers").controller('ctrl', ['$scope', function($scope){
-  $scope.service = "hi";
-  window.testScope = $scope;
-}]);
+
 

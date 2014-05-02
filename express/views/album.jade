@@ -9,20 +9,18 @@ block content
         .album-header-information
           h3.album-title {{ album.name }}
           h4.album-artist {{ album.artist }}  
-          h5.album-meta-info {{ album.year}} on {{ album.label }} 
-          input(ng-model="service", style="color: #000") 
-          | {{ service}}
-        div(ng-controller="ctrl")
-          input(ng-model="service", style="color: #000") 
-          p  | {{ service }}
-          p {{ $parent.service }}
+          h5.album-meta-info {{ album.year }} on {{ album.label }} 
 
     .row
       .col-md-12
         table.table.table-hover.album-song-list-table
-          tr(ng-repeat="song in album.songs")
-            td
+          tr(ng-repeat="song in album.songs", ng-switch on="selection", ng-mouseenter="showPlay()", ng-mouseleave="showTrackNumber()")
+            td(ng-switch-when="default")
               | {{ $index + 1 }}
+            td(ng-switch-when="play")
+              |  <i class="fa fa-play", ng-click="showPause()")></i>
+            td(ng-switch-when="pause")
+              |  <i class="fa fa-pause" , ng-click="showPlay()"></i>
             td
               | {{ song.name }}
             td
