@@ -14,16 +14,18 @@ block content
     .row
       .col-md-12
         table.table.table-hover.album-song-list-table
-          tr(ng-repeat="song in album.songs", ng-switch on="selection", ng-mouseenter="showPlay()", ng-mouseleave="showTrackNumber()")
-            td(ng-switch-when="default")
-              | {{ $index + 1 }}
-            td(ng-switch-when="play")
-              |  <i class="fa fa-play", ng-click="showPause()")></i>
-            td(ng-switch-when="pause")
-              |  <i class="fa fa-pause" , ng-click="showPlay()"></i>
-            td
+          tr(ng-repeat="song in album.songs", ng-mouseenter= "showPlay($index)", ng-mouseleave="showTrackNumber($index)")
+            td.col-md-2(ng-switch="rowState($index)")
+              div(ng-switch-when="play")
+                |  <i class="fa fa-play", ng-click="showPause($index)")></i>
+              div(ng-switch-when="pause")
+                |  <i class="fa fa-pause" , ng-click="showClickedPlay($index)"></i>
+              div(ng-switch-when="default")
+                | {{ $index + 1 }}
+              
+            td.col-md-8
               | {{ song.name }}
-            td
+            td.col-md-2
               | {{ song.length }}
 
 

@@ -38,22 +38,51 @@ angular.module("Controllers").controller('Album.controller', ['$scope', function
   var albums = [albumPicasso, albumMarconi];
   var currentAlbumIndex = 0;
   var options = ['default', 'play', 'pause'];
-  $scope.selection = options[0];
+  var playing = [];
+
 
   // Remember: All properties added to the '$scope' object can be accessed in the 
   $scope.album = albums[0];
+  reinitializeSelections = function() {
+    $scope.selections = [];
+    for (var i = 0; i < $scope.album.songs.length; i++) {
+      $scope.selections.push("default");
+    }
+  };
+
+  reinitializeSelections();
+
   $scope.changeAlbum = function() {
     currentAlbumIndex = (currentAlbumIndex + 1) % albums.length;
     $scope.album = albums[currentAlbumIndex];
+    reinitializeSelections();
   };
-  $scope.showPlay = function(){
-    $scope.selection = options[1];
+
+  $scope.showPlay = function($index){
+    if ($scope.rowState($index) === "default") {
+      $scope.selections[$index] = "play";
+    }
   };
-  $scope.showTrackNumber = function(){
-    $scope.selection = options[0];
+  $scope.showClickedPlay = function($index){
+    if ($scope.rowState($index) === "pause") {
+      $scope.selections[$index] = "play";
+      playing = [];
+
+    }
   };
-   $scope.showPause = function(){
-    $scope.selection = options[2];
+
+  $scope.showTrackNumber = function($index){
+    if ($scope.rowState($index) !== "pause"){
+    $scope.selections[$index] = "default";
+    }
+  };
+   $scope.showPause = function($index){
+    $scope.selections[playing[0]] = "default";
+    $scope.selections[$index] = "pause";
+    playing = [$index];
+  };
+  $scope.rowState = function($index) {
+    return $scope.selections[$index];
   };
 
 }]);
