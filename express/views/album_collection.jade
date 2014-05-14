@@ -1,6 +1,19 @@
 extends layouts/player_layout
 
 block content
-  .container.album-collection-container
+  .container.album-collection-container(ng-controller="AlbumCollection.controller")
     .row
-      
+      div(ng-repeat ="album in albums")
+        .col-xs-2
+          .thumbnail
+            .collection-album-image-container
+              a(ng-href="/album")
+                img(ng-src="{{ album.albumArtUrl }}")
+            .caption
+              h4.album-name
+                a(ng-href="") {{ album.name }}
+              h4.album-name: a(ng-href="") {{ album.artist }}
+              h4.album-name: a(ng-href="") {{ album.songs.length }}
+
+
+        

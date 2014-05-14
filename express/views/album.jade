@@ -9,12 +9,13 @@ block content
         .album-header-information
           h3.album-title {{ album.name }}
           h4.album-artist {{ album.artist }}  
-          h5.album-meta-info {{ album.year }} on {{ album.label }} 
+          h5.album-meta-info {{ album.metaInfo() }}
 
     .row
       .col-md-12
         table.table.table-hover.album-song-list-table
-          tr(ng-repeat="song in album.songs", ng-mouseenter= "showPlay($index)", ng-mouseleave="showTrackNumber($index)")
+          tr(ng-repeat="song in album.songs", ng-mouseenter= "showPlay($index)", ng-mouseleave="showTrackNumber($index)"
+             ng-class="{'selected-row': rowIsSelected($index)}")
             td.col-md-2(ng-switch="rowState($index)")
               div(ng-switch-when="play")
                 |  <i class="fa fa-play", ng-click="showPause($index)")></i>

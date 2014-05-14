@@ -33,13 +33,17 @@ var albumMarconi = {
     ]
 };
 
-angular.module("Controllers").controller('Album.controller', ['$scope', function($scope) {
+angular.module("Controllers").controller('Album.controller', ['$scope', 'Album' , function($scope, Album) {
 
-  var albums = [albumPicasso, albumMarconi];
+  var albums = [new Album(albumPicasso), new Album(albumMarconi)];
   var currentAlbumIndex = 0;
   var options = ['default', 'play', 'pause'];
   var playing = [];
 
+  $scope.rowIsSelected = function($index){
+
+    return $scope.selections[$index] == "pause";
+  }
 
   // Remember: All properties added to the '$scope' object can be accessed in the 
   $scope.album = albums[0];

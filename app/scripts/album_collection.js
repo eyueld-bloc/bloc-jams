@@ -1,4 +1,5 @@
 
+/*
 var buildDefaultThumbnail = function(albumURL){
   var defaultThumbnail = 
         '<div class="col-md-2">'
@@ -45,7 +46,7 @@ var updateCollectionView = function() {
     $(this).append(buildAlbumOverlay("/album"));
   }
 
-  // Function that will be called whenever an album image is hovered over.
+  // Function that will be called whenever an album image is hovered out.
   var offHover = function(event) {
     // Remove the overlay from the album image container.
     $(this).find('.collection-album-image-overlay').remove();
@@ -68,8 +69,9 @@ var updateCollectionView = function() {
     $collection.append($newThumbnail);
   }
   */
-  
+/*  
 };
+
 
 if (document.URL.match(/\/collection/)) {
   // Wait until the HTML is fully processed.
@@ -79,3 +81,4 @@ if (document.URL.match(/\/collection/)) {
   });
 }
 
+*/
